@@ -34,7 +34,7 @@ export default async function handler(
     cookie.serialize("ACCESS_APP_TOKEN", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
+      sameSite: "lax", // check the link details -> https://community.cookiepro.com/s/article/UUID-e7d59043-be8d-e218-0724-305ec899c95f?language=en_US#:~:text=The%20SameSite%3DLax%20setting%20will,SameSite%3DNone
       maxAge: 60 * 60 * 24,
       path: "/",
     })
