@@ -29,12 +29,21 @@ const theme = extendTheme({
     },
   },
 });
-function MyApp({ Component, pageProps }: AppProps) {
+interface AppPropsWithLayout extends AppProps {
+  Component: AppProps["Component"] & { layout?: React.FC } & {
+    authPage?: boolean;
+  };
+}
+function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <ChakraProvider theme={theme}>
-      <PlayerLayout>
+      {Component.authPage ? (
         <Component {...pageProps} />
-      </PlayerLayout>
+      ) : (
+        <PlayerLayout>
+          <Component {...pageProps} />
+        </PlayerLayout>
+      )}
     </ChakraProvider>
   );
 }
