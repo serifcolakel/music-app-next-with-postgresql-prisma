@@ -1,12 +1,13 @@
 import fetcher from "./fetcher";
 
 export const auth = (
-  mode: "sigin" | "signup" | "signout" | "check" | "refresh" | "delete",
+  mode: "signin" | "signup" | "signout" | "check" | "refresh" | "delete",
   body: {
     email: string;
     password: string;
   }
 ) => {
+  console.log("auth", mode, body);
   return fetcher(`/${mode}`, body);
 };
 
