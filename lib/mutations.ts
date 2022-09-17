@@ -7,7 +7,6 @@ export const auth = (
     password: string;
   }
 ) => {
-  console.log("auth", mode, body);
   return fetcher(`/${mode}`, body);
 };
 

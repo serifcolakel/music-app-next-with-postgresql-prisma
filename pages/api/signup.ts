@@ -12,7 +12,6 @@ export default async function handler(
   const salt = bcrypt.genSaltSync();
   const { email, password } = req.body;
   let user;
-  console.log("req.body", req.body);
   try {
     user = await prisma.user.create({
       data: {

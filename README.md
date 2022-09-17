@@ -5,6 +5,10 @@
     <img src="https://i.hizliresim.com/a27dhrh.jpg" alt="Logo" width="80" height="80">
   </a>
 </div>
+npx prisma db seed
+npx prisma studio
+npx prisma generate
+npx prisma migrate dev --name init
 
 <!-- TABLE OF CONTENTS -->
 <details>
