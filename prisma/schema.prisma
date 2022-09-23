@@ -13,31 +13,33 @@ datasource db {
 
 model User {
   id        Int        @id @default(autoincrement())
-  email     String     @unique
-  password  String
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
-  Playlist  Playlist[]
+  email     String     @unique
+  firstName String
+  lastName  String
+  password  String
+  playlists Playlist[]
 }
 
 model Song {
   id        Int        @id @default(autoincrement())
-  artist    Artist     @relation(fields: [artistId], references: [id])
-  artistId  Int
-  duration  Int
-  name      String
-  url       String
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
-  playlist  Playlist[]
+  name      String
+  artist    Artist     @relation(fields: [artistId], references: [id])
+  artistId  Int
+  playlists Playlist[]
+  duration  Int
+  url       String
 }
 
 model Artist {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  name      String   @unique
   songs     Song[]
+  name      String   @unique
 }
 
 model Playlist {
@@ -46,6 +48,6 @@ model Playlist {
   updatedAt DateTime @updatedAt
   name      String
   songs     Song[]
-  User      User?    @relation(fields: [userId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
   userId    Int
 }
