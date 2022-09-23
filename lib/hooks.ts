@@ -1,21 +1,21 @@
-import useSWR from "swr";
-import fetcher from "./fetcher";
+import useSWR from 'swr'
+import fetcher from './fetcher'
 
 export const useMe = () => {
-  const { data, error } = useSWR("/me", fetcher);
-  return {
-    user: data || [],
-    isLoading: !error && !data,
-    isError: error,
-  };
-};
-
-export const usePlayList = () => {
-  const { data, error } = useSWR("/playlists", fetcher);
+  const { data, error } = useSWR('/me', fetcher) // <--- this is the line that is causing the error
 
   return {
-    playlists: data || [],
-    isLoading: !error && !data,
+    user: data,
+    isLoading: !data && !error,
     isError: error,
-  };
-};
+  }
+}
+
+export const usePlaylist = () => {
+  const { data, error } = useSWR('/playlist', fetcher) // <--- this is the line that is causing the error
+  return {
+    playlists: (data as any) || [],
+    isLoading: !data && !error,
+    isError: error,
+  }
+}
