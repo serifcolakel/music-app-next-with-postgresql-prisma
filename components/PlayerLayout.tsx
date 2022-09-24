@@ -1,27 +1,21 @@
-import Head from "next/head";
-import { Box, Flex } from "@chakra-ui/layout";
-import SideBar from "./SiderBar";
+import { Box } from '@chakra-ui/layout'
+import PlayerBar from './playerBar'
+import Sidebar from './sidebar'
 
 const PlayerLayout = ({ children }) => {
   return (
-    <Box width={"100vw"} height={"100vh"}>
-      <Flex flexDirection={"row"} width={"100vw"}>
-        <SideBar />
-        <p>Home</p>
-      </Flex>
-      <Flex>
-        <Box
-          justifyContent={"center"}
-          alignItems="center"
-          width={"100vw"}
-          height={"100px"}
-          bg={"black"}
-        >
-          Test
-        </Box>
-      </Flex>
+    <Box width="100vw" height="100vh">
+      <Box position="absolute" top="0" width="250px" left="0">
+        <Sidebar />
+      </Box>
+      <Box marginLeft="250px" marginBottom="100px">
+        <Box height="calc(100vh - 100px)">{children}</Box>
+      </Box>
+      <Box position="absolute" left="0" bottom="0">
+        <PlayerBar />
+      </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default PlayerLayout;
+export default PlayerLayout
